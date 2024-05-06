@@ -1,3 +1,5 @@
+import {BrowserRouter, Routes, Route } from "react-router-dom"
+import Footer from "./components/Footer"
 import Item from "./components/Item"
 import ItemListContainer from "./components/ItemListContainer"
 import NavBar from "./components/NavBar"
@@ -9,14 +11,22 @@ function App() {
 
 
   return (
-    <>
+    <BrowserRouter>
       
     <NavBar/>
     <Welcome/>
-    <ItemListContainer/>
-  
-    <Item/>
-    </>
+     <ItemListContainer/>
+     <Item/>
+
+    <Routes>
+
+     <Route exact path="/" element={<Welcome/>} />
+
+    </Routes>
+
+    <Footer/>
+
+    </BrowserRouter>
   )
 }
 
