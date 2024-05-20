@@ -1,45 +1,31 @@
-import React from 'react';
-import { Menu, MenuButton, MenuList, MenuItem, Button, Flex, Spacer, Box, ButtonGroup, Heading} from "@chakra-ui/react";
-import { ChevronDownIcon } from '@chakra-ui/icons';
-import CartWidget from "./CartWidget"
+import CartWidget from "./CartWidget";
+import { Container, Flex, Spacer, Box, Heading } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
+import Sections from "./Sections";
 
 const NavBar = () => {
   return (
-    <div>
-
-<Flex minWidth='max-content' alignItems='center' gap='2'>
-  <Box p='2'>
-    <Heading size='md'>KLOVERSTORE</Heading>
-  </Box>
-  <Menu>
-    {({ isOpen }) => (
-      <>
-        <MenuButton colorScheme='teal' isActive={isOpen} as={Button} rightIcon={<ChevronDownIcon />}>
-          {isOpen ? 'Close' : 'Open'}
-        </MenuButton>
-      <MenuList>
-      <MenuItem>Categoria 1</MenuItem>
-      <MenuItem>Categoria 2</MenuItem>
-      <MenuItem>Categoria 3</MenuItem>
-      <MenuItem>Categoria 4</MenuItem>
-      </MenuList>
-      </>
-    )}
-  </Menu>
-  <Spacer />
-  <ButtonGroup gap='2'>
-    <Button colorScheme='teal' >Sign Up</Button>
-    <Button colorScheme='teal'>Log in</Button>
-    <Button colorScheme='teal'>Sign Up</Button>
-    <Button colorScheme='teal'><CartWidget/></Button>
-    
-  </ButtonGroup>
-</Flex>
-
-  </div>
+    <>
+      <Container maxW="100rem" bg="teal" color="#262626">
+        <Flex alignContent="canter">
+          <Box p="2" color="white">
+            <Heading>
+              <Link to={"/"}>KLOVERSTORE</Link>
+            </Heading>
+          </Box>
+          <Spacer />
+          <Sections />
+          <Spacer />
+          <Box p="2" color="white" className="flex">
+            <Flex>
+              <Link to={"/cart"}>
+                <CartWidget />
+              </Link>
+            </Flex>
+          </Box>
+        </Flex>
+      </Container>
+    </>
   );
-}
-
-
-
-export default NavBar
+};
+export default NavBar;
